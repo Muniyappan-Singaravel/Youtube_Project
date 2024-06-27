@@ -74,7 +74,7 @@ def channel_details(chnl_id):
     # getting playlist id in a seperate list
     Playlist_id = response['items'][i]['contentDetails']['relatedPlaylists']['uploads']
 
-    # Inserting channel_details to the sql table using DDL & DTL commands
+    # Inserting channel_details to the sql table using DDL & TCL commands
     for i in range(len(channel_data)):
         mycursor.execute('''INSERT INTO channel_details(channel_id,channel_name,playlist_id,
                                         channel_video, channel_view,thumb_nail,subscribers)
@@ -170,7 +170,7 @@ def channel_details(chnl_id):
             
             all_video_details.append(vido_dtl)
 
-    # Inserting video_details to the sql table using DDL & DTL commands
+    # Inserting video_details to the sql table using DDL & TCL commands
     for i in range(len(all_video_details)):
         mycursor.execute('''INSERT INTO video_details(video_id,publish_date,channel_id,
                                         video_name,duration,view_count,
