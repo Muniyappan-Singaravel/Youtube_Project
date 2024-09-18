@@ -221,10 +221,20 @@ def feed_datas():
                 # Execute predefined function if the Channel ID does not exist
                 with st.spinner('Processing...'):
                     channel_details(chenl_id)
-                st.success("Data collected successfully!")
-				
+                    if channel_data:
+                        st.image(f'{channel_data[0]["thumbnail"]}')
+                        st.markdown(f'***Channel Name :*** {channel_data[0]["channel_name"]}')
+                        st.markdown(f'***Playlist ID :*** {channel_data[0]["playlist_id"]}')
+                        st.markdown(f'***Number of Videos :*** {channel_data[0]["channel_video"]}')
+                        st.markdown(f'***Total Views :*** {channel_data[0]["channel_views"]}')
+                        st.markdown(f'***Subscribers :*** {channel_data[0]["subscription_count"]}')
+                        st.write(f'Description : {channel_data[0]["channel_description"]}')
+                        st.success("Data collected successfully!")
+                    else:
+                        st.error("No details found for the selected channel.")
         except Exception as e:
             st.error(f"An error occurred: {e} not found, Please enter a valid channel ID")
+
 
 
 # Defining multiple functions to answer Questions
@@ -423,4 +433,3 @@ elif selected_page == "Questions":
 	
 
 # __over__
-
